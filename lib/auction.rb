@@ -31,4 +31,33 @@ class Auction
     end
     total
   end
+
+  def bidders
+    bidders = []
+    @items.each do |item|
+      item.bids.each do |attendee, amount|
+        bidders << attendee.name
+      end
+    end
+    bidders.uniq
+  end
+
+
+  def bidder_info
+    bidders = {}
+    @items.each do |item, attendee|
+      item.bids.each do |attendee, amount|
+        if !bidders.include?(attendee)
+          bidders[attendee] = [item]
+        else
+          bidders[attendee] << item
+        end
+      end
+    end
+    bidders_with_info = {}
+    bidders.each do |bidder, items|
+      bidders_with_info[bidder] = {budget: bidder.budget, items: items}
+    end
+    bidders_with_info
+  end
 end

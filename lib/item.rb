@@ -1,4 +1,7 @@
-class Item
+require './lib/attendee'
+require './lib/auction'
+
+class Item < Attendee
   attr_reader :name, :bids
 
   def initialize(name)
