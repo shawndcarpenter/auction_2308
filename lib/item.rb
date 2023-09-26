@@ -1,7 +1,7 @@
 require './lib/attendee'
 require './lib/auction'
 
-class Item < Attendee
+class Item
   attr_reader :name, :bids
 
   def initialize(name)

@@ -8,5 +8,4 @@ class Attendee < Auction
     @name = data[:name]
     @budget = data[:budget].delete('$').to_i
   end
-
 end
