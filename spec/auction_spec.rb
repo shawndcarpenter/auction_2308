@@ -75,6 +75,13 @@ RSpec.describe Auction do
                                           @attendee2 => {:budget => 75, :items => [@item1, @item3]},
                                           @attendee3 => {:budget => 100, :items => [@item4]}})
     end
+
+    it 'can close bidding' do
+      expect(@item1.bids).to eq({@attendee2 => 20, @attendee1 => 22})
+      @item1.close_bidding
+      @item1.add_bid(@attendee3, 30)
+      expect(@item1.bids).to eq({@attendee2 => 20, @attendee1 => 22})
+    end
   end
 
 end
